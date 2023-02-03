@@ -10,8 +10,9 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( -4, -4, -4, 3, 6, 0, 6, -1 )
+polygon = PoolVector2Array( 0, -4, 0, 3, 6, 0, 6, -1 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://snakehead.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sunny-spells-font/SunnyspellsRegular-MV9ze.otf" type="DynamicFontData" id=2]
@@ -13,7 +13,10 @@
 extents = Vector2( 193, 10 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.5, 98 )
+extents = Vector2( 12, 191.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 13, 192 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -26,7 +29,7 @@ script = ExtResource( 7 )
 [node name="wall" type="Node2D" parent="."]
 
 [node name="left" type="Sprite" parent="wall"]
-position = Vector2( -176, 0 )
+position = Vector2( -176, -4 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 2048 )
@@ -71,12 +74,12 @@ zoom = Vector2( 0.25, 0.25 )
 [node name="Area2D" type="Area2D" parent="CameraControl"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraControl/Area2D"]
-position = Vector2( -178, 0 )
+position = Vector2( -180, 0 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraControl/Area2D"]
-position = Vector2( 178, 0 )
-shape = SubResource( 1 )
+position = Vector2( 179, 0 )
+shape = SubResource( 4 )
 
 [node name="Winscreen" type="Node2D" parent="CameraControl"]
 pause_mode = 2
@@ -101,13 +104,13 @@ texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 384, 1920 )
 
-[node name="background2" type="Sprite" parent="."]
+[node name="topground" type="Sprite" parent="."]
 position = Vector2( 0, -112 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 384, 192 )
 
-[node name="background3" type="Sprite" parent="."]
+[node name="ground" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 384, 32 )
