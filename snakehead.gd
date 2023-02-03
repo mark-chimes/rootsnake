@@ -32,7 +32,7 @@ func _process(delta):
 	elif angle < 0:
 		angle += 360
 	
-	rotation_degrees = angle
+	$Sprite.rotation_degrees = angle
 
 func _physics_process(delta):
 	position += Vector2(1, 0).rotated(deg2rad(angle)) * VEL * delta

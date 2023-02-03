@@ -10,7 +10,6 @@ func _ready():
 
 func _physics_process(delta):
 	timer += delta
-
 	if timer >= SPAWN_TIME: 
 		timer = 0
 		spawn_piece()
@@ -19,5 +18,5 @@ func spawn_piece():
 	var snakehead = get_parent().get_node("snakehead")
 	var trail_piece = trail_piece_res.instance()
 	trail_piece.position = snakehead.position
-	trail_piece.rotation_degrees = snakehead.rotation_degrees
+	trail_piece.rotation_degrees = snakehead.get_node("Sprite").rotation_degrees
 	add_child(trail_piece)
