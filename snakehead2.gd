@@ -16,12 +16,12 @@ var angle = 0.0
 var turn_speed = 180.0
 
 func _ready(): 
-	angle = 75
+	angle = 105
 
 func _process(delta):
-	if Input.is_action_pressed("p1_left"):
+	if Input.is_action_pressed("p2_left"):
 		angle += turn_speed * delta
-	elif Input.is_action_pressed("p1_right"):
+	elif Input.is_action_pressed("p2_right"):
 		angle -= turn_speed * delta
 		
 	# position.x += rand_range(-20*delta,20*delta)
