@@ -15,11 +15,8 @@ var VEL = 64.0
 var angle = 0.0
 var turn_speed = 180.0
 
-func _ready():
-	pass
-
-var timer = 0.0
-var SPAWN_TIME = 1
+func _ready(): 
+	angle = 75
 
 func _process(delta):
 	if Input.is_action_pressed("right"):
@@ -36,3 +33,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	position += Vector2(1, 0).rotated(deg2rad(angle)) * VEL * delta
+
+
+func _on_Area2D_area_entered(area):
+	print("Collision!")

@@ -19,6 +19,11 @@ script = ExtResource( 1 )
 modulate = Color( 0.501961, 0.501961, 0.0980392, 1 )
 texture = ExtResource( 2 )
 
+[node name="Area2D" type="Area2D" parent="snakehead"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="snakehead/Area2D"]
+polygon = PoolVector2Array( -4, -4, -4, 4, 5, 1, 5, -1 )
+
 [node name="background" type="Node2D" parent="."]
 
 [node name="grid_small" type="Sprite" parent="background"]
@@ -44,3 +49,5 @@ script = ExtResource( 6 )
 [node name="Camera2D" type="Camera2D" parent="CameraControl"]
 current = true
 zoom = Vector2( 0.25, 0.25 )
+
+[connection signal="area_entered" from="snakehead/Area2D" to="snakehead" method="_on_Area2D_area_entered"]
