@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const LIFETIME = 60.0
+const LIFETIME = 12.0
 var countdown = LIFETIME
 
 var growth_time = 0.0
@@ -11,6 +11,9 @@ const GROWTH_ADD = 3.0
 var lifetime = 0.0
 var COLLISION_TIME = 0.5
 var has_activated_collisions = false
+
+export var start_col = Color(0,0,0)
+export var end_col = Color(0,0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,7 +39,4 @@ func _process(delta):
 	var size = 1.0 + GROWTH_ADD * growth_factor
 	scale = Vector2(size,size)
 	
-	var start_color = Color(0.5,0.5,0.1)
-	var end_color = Color(0.8,0.4,0.05)
-	
-	$Sprite.modulate = start_color.linear_interpolate(end_color, growth_factor)
+	$Sprite.modulate = start_col.linear_interpolate(end_col, growth_factor)
