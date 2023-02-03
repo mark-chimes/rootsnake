@@ -25,17 +25,13 @@ func _process(delta):
 	timer += delta
 	
 	if Input.is_action_just_pressed("right"):
-		next_dir = Dir.RIGHT
+		dir = Dir.RIGHT
 	elif Input.is_action_just_pressed("down"):
-		next_dir = Dir.DOWN
+		dir = Dir.DOWN
 	elif Input.is_action_just_pressed("left"):
-		next_dir = Dir.LEFT
+		dir = Dir.LEFT
 	elif Input.is_action_just_pressed("up"):
-		next_dir = Dir.UP
-		
-	if timer >= CHANGE_TIME: 
-		timer -= CHANGE_TIME
-		dir = next_dir
+		dir = Dir.UP
 		
 	if dir == Dir.RIGHT:
 		position.x += VEL*delta
