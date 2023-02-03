@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://snakehead.gd" type="Script" id=1]
 [ext_resource path="res://sprites/triangle.png" type="Texture" id=2]
+[ext_resource path="res://sprites/box.png" type="Texture" id=3]
+[ext_resource path="res://sprites/box_small.png" type="Texture" id=4]
 
 [node name="main" type="Node2D"]
 
@@ -16,3 +18,21 @@ texture = ExtResource( 2 )
 anchor_mode = 0
 current = true
 zoom = Vector2( 0.25, 0.25 )
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="grid_small" type="Sprite" parent="background"]
+visible = false
+modulate = Color( 1, 1, 1, 0.168627 )
+show_behind_parent = true
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 192, 192 )
+
+[node name="grid_big" type="Sprite" parent="background"]
+modulate = Color( 1, 1, 1, 0.368627 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 192, 192 )

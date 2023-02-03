@@ -9,22 +9,33 @@ enum Dir {
 	UP, DOWN, LEFT, RIGHT
 } 
 
-var VEL = 32
+var GRID_SIZE = 16.0
+
+var VEL = 64.0
 var dir = Dir.RIGHT
+var next_dir = Dir.RIGHT
 
 func _ready():
 	pass
 
+var timer = 0.0
+var CHANGE_TIME = GRID_SIZE/VEL
 
 func _process(delta):
+	timer += delta
+	
 	if Input.is_action_just_pressed("right"):
-		dir = Dir.RIGHT
+		next_dir = Dir.RIGHT
 	elif Input.is_action_just_pressed("down"):
-		dir = Dir.DOWN
+		next_dir = Dir.DOWN
 	elif Input.is_action_just_pressed("left"):
-		dir = Dir.LEFT
+		next_dir = Dir.LEFT
 	elif Input.is_action_just_pressed("up"):
-		dir = Dir.UP
+		next_dir = Dir.UP
+		
+	if timer >= CHANGE_TIME: 
+		timer -= CHANGE_TIME
+		dir = next_dir
 		
 	if dir == Dir.RIGHT:
 		position.x += VEL*delta
