@@ -34,9 +34,9 @@ func _process(delta):
 	
 	var growth_factor =  growth_time/GROWTH_TIME
 	var size = 1.0 + GROWTH_ADD * growth_factor
-	$Sprite.scale = Vector2(size,size)
+	scale = Vector2(size,size)
 	
 	var start_color = Color(0.5,0.5,0.1)
-	var end_color = Color(0.2,0.1,0.05)
+	var end_color = Color(0.8,0.4,0.05)
 	
 	$Sprite.modulate = start_color.linear_interpolate(end_color, growth_factor)

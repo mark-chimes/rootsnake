@@ -1,13 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://snakehead.gd" type="Script" id=1]
-[ext_resource path="res://sprites/white_triangle.png" type="Texture" id=2]
-[ext_resource path="res://sprites/box.png" type="Texture" id=3]
-[ext_resource path="res://sprites/box_small.png" type="Texture" id=4]
+[ext_resource path="res://sprites/triangle_shaded_front.png" type="Texture" id=2]
+[ext_resource path="res://sprites/backtile.png" type="Texture" id=3]
+[ext_resource path="res://sprites/uplayer.png" type="Texture" id=4]
 [ext_resource path="res://trail.gd" type="Script" id=5]
 [ext_resource path="res://CameraControl.gd" type="Script" id=6]
+[ext_resource path="res://sprites/sidewall.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13.5, 98 )
 
 [node name="main" type="Node2D"]
+
+[node name="wall" type="Node2D" parent="."]
+
+[node name="left" type="Sprite" parent="wall"]
+position = Vector2( -96, 0 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 2048 )
+
+[node name="right" type="Sprite" parent="wall"]
+position = Vector2( 96, 0 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 2048 )
 
 [node name="trail" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -24,30 +43,39 @@ texture = ExtResource( 2 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="snakehead/Area2D"]
 polygon = PoolVector2Array( -4, -4, -4, 4, 5, 1, 5, -1 )
 
-[node name="background" type="Node2D" parent="."]
-
-[node name="grid_small" type="Sprite" parent="background"]
-visible = false
-modulate = Color( 1, 1, 1, 0.168627 )
-show_behind_parent = true
-texture = ExtResource( 4 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 192, 192 )
-
-[node name="grid_big" type="Sprite" parent="background"]
-visible = false
-modulate = Color( 1, 1, 1, 0.368627 )
-texture = ExtResource( 3 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 192, 192 )
-
 [node name="CameraControl" type="Node2D" parent="."]
 script = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="CameraControl"]
 current = true
 zoom = Vector2( 0.25, 0.25 )
+
+[node name="Area2D" type="Area2D" parent="CameraControl"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraControl/Area2D"]
+position = Vector2( -98.5, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraControl/Area2D"]
+position = Vector2( 98, 0 )
+shape = SubResource( 1 )
+
+[node name="background" type="Sprite" parent="."]
+modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
+z_index = -10
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 192, 1920 )
+
+[node name="background2" type="Sprite" parent="."]
+position = Vector2( 0, -112 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 192, 192 )
+
+[node name="background3" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 192, 32 )
 
 [connection signal="area_entered" from="snakehead/Area2D" to="snakehead" method="_on_Area2D_area_entered"]
