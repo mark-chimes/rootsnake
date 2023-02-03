@@ -1,6 +1,8 @@
 extends Node2D
 
 
+
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -20,8 +22,6 @@ var timer = 0.0
 var SPAWN_TIME = 1
 
 func _process(delta):
-	timer += delta
-	
 	if Input.is_action_pressed("right"):
 		angle += turn_speed * delta
 	elif Input.is_action_pressed("left"):
@@ -32,7 +32,7 @@ func _process(delta):
 	elif angle < 0:
 		angle += 360
 	
-	print(angle)
-	
-	$Sprite.rotation_degrees = angle
+	rotation_degrees = angle
+
+func _physics_process(delta):
 	position += Vector2(1, 0).rotated(deg2rad(angle)) * VEL * delta
