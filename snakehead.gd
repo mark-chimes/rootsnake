@@ -1,5 +1,7 @@
 extends Node2D
 
+signal collide
+
 var VEL = 64.0
 
 var turn_speed = 180.0
@@ -7,6 +9,7 @@ var turn_speed = 180.0
 export var action_left = "p1_left"
 export var action_right = "p1_right"
 export var angle = 75
+export var display_name = "DEFAULT"
 
 func _process(delta):
 	if Input.is_action_pressed(action_left):
@@ -28,4 +31,5 @@ func _physics_process(delta):
 
 
 func _on_Area2D_area_entered(area):
-	print("Collision!")
+	print(str(display_name) + "Collision!")
+	emit_signal("collide")
