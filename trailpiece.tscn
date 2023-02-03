@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://sprites/triangle.png" type="Texture" id=1]
+[ext_resource path="res://sprites/white_triangle.png" type="Texture" id=1]
 [ext_resource path="res://trailpiece.gd" type="Script" id=2]
 
 [node name="trailpiece" type="Node2D"]

@@ -18,5 +18,5 @@ func spawn_piece():
 	var snakehead = get_parent().get_node("snakehead")
 	var trail_piece = trail_piece_res.instance()
 	trail_piece.position = snakehead.position
-	trail_piece.rotation_degrees = snakehead.get_node("Sprite").rotation_degrees
+	trail_piece.rotation_degrees = snakehead.rotation_degrees
 	add_child(trail_piece)
