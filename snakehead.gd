@@ -23,6 +23,8 @@ func _process(delta):
 		angle += turn_speed * delta
 	elif Input.is_action_pressed("left"):
 		angle -= turn_speed * delta
+		
+	# position.x += rand_range(-20*delta,20*delta)
 	
 	if angle > 360:
 		angle -= 360

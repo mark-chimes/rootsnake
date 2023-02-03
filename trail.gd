@@ -2,16 +2,17 @@ extends Node2D
 
 var trail_piece_res = load("res://trailpiece.tscn")
 
-var timer = 0.0
-var SPAWN_TIME = 0.1
+
+var SPAWN_TIME = 0.05
+var countdown = SPAWN_TIME
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	timer += delta
-	if timer >= SPAWN_TIME: 
-		timer = 0
+	countdown -= delta
+	if countdown <= 0: 
+		countdown = SPAWN_TIME
 		spawn_piece()
 
 func spawn_piece(): 
