@@ -5,7 +5,8 @@ const LIFETIME = 12.0
 var countdown = LIFETIME
 
 var growth_time = 0.0
-const GROWTH_TIME = 5.0
+const GROWTH_TIME = 4.0
+const COLOR_TIME = 2.0
 const GROWTH_ADD = 3.0
 
 var lifetime = 0.0
@@ -36,7 +37,8 @@ func _process(delta):
 		growth_time = GROWTH_TIME
 	
 	var growth_factor =  growth_time/GROWTH_TIME
+	var color_factor = min(1, growth_time/COLOR_TIME)
 	var size = 1.0 + GROWTH_ADD * growth_factor
 	scale = Vector2(size,size)
 	
-	$Sprite.modulate = start_col.linear_interpolate(end_col, growth_factor)
+	$Sprite.modulate = start_col.linear_interpolate(end_col, color_factor)

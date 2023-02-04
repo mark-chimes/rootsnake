@@ -20,13 +20,11 @@ func _process(delta):
 		position.y = mid_pos
 		
 		if is_game_continuing:
-			if mid_pos - snake_1_pos.y > 200: 
+			if mid_pos - snake_1_pos.y > 800: 
 				is_game_continuing = false
 				emit_signal("lose_1")
-			if mid_pos - snake_2_pos.y > 200: 
+			if mid_pos - snake_2_pos.y > 800: 
 				is_game_continuing = false
 				emit_signal("lose_2")
-		
-		# print(snake_1_pos.y - mid_pos)
 	else:
 		position.y = snake_1_pos.y

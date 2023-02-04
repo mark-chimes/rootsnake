@@ -2,7 +2,7 @@ extends Node2D
 
 signal collide
 
-var VEL = 64.0
+var VEL = 256.0
 
 var turn_speed = 180.0
 
@@ -16,8 +16,8 @@ export var action_right = "p1_right"
 export var angle = 75
 export var display_name = "DEFAULT"
 
-const MAX_DIST = 200.0
-const MIN_DIST = 4.0
+const MAX_DIST = 800.0
+const MIN_DIST = 12.0
 
 func start_game():
 	pass
@@ -33,12 +33,7 @@ func _process(delta):
 			angle += turn_speed * delta
 		elif Input.is_action_pressed(action_left):
 			angle -= turn_speed * delta
-
-	if angle > 360: 
-		angle -= 360
-	if angle < 0: 
-		angle += 360
-	rotation_degrees = angle
+	reset_angle_and_rotate()
 
 func _physics_process(delta):
 	var vel = VEL
@@ -48,11 +43,27 @@ func _physics_process(delta):
 		if other_player.position.y > position.y + MIN_DIST:
 			var vertical_component = sin(deg2rad(angle))
 			var dist_ratio = (other_player.position.y + MIN_DIST*2 - position.y)/MAX_DIST
-			print(dist_ratio)
 			vel = VEL*(1 + sqrt(dist_ratio) * vertical_component)
 			
 		position += Vector2(1, 0).rotated(deg2rad(angle)) * vel * delta
 
 func _on_Area2D_area_entered(area):
-	print(str(display_name) + "Collision!")
-	emit_signal("collide")
+	print(str(display_name) + "Collision with wall")
+	angle = 180 - angle
+	position += Vector2(1, 0).rotated(deg2rad(angle)) * VEL/16
+	reset_angle_and_rotate()
+
+func _on_Area2D2_area_entered(area):
+	print(str(display_name) + "Collision with object")	
+	var coll_angle = rad2deg(area.global_position.angle_to_point(global_position))
+	print("Coll angle: " + str(coll_angle))
+	print("Angle pre reset: " + str(angle))
+	angle = 2 * coll_angle + 180 - angle
+	reset_angle_and_rotate()
+	print("Angle post reset: " + str(angle))
+	position += Vector2(1, 0).rotated(deg2rad(angle)) * VEL/16
+
+
+func reset_angle_and_rotate(): 
+	angle = fmod(angle, 360)
+	rotation_degrees = angle

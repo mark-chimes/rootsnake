@@ -6,10 +6,10 @@ var num_players = 1
 
 var SPAWN_TIME = 0.1
 var countdown = SPAWN_TIME
-var s1_start_col = Color(0.1,0.5,0.1)
-var s1_end_col = Color(0.3,0.15,0.05)
-var s2_start_col = Color8(178,57,15)
-var s2_end_col = Color(0.2,0.1,0.175)
+var s1_start_col = Color(0.1,0.7,0.1)
+var s1_end_col = Color(0.5,0.4,0.05)
+var s2_start_col = Color(0.8,0.2,0.15)
+var s2_end_col = Color(0.3,0.175,0.3)
 
 func _ready():
 	pass
