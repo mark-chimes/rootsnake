@@ -48,19 +48,14 @@ func _physics_process(delta):
 		position += Vector2(1, 0).rotated(deg2rad(angle)) * vel * delta
 
 func _on_Area2D_area_entered(area):
-	print(str(display_name) + "Collision with wall")
 	angle = 180 - angle
 	position += Vector2(1, 0).rotated(deg2rad(angle)) * VEL/16
 	reset_angle_and_rotate()
 
 func _on_Area2D2_area_entered(area):
-	print(str(display_name) + "Collision with object")	
 	var coll_angle = rad2deg(area.global_position.angle_to_point(global_position))
-	print("Coll angle: " + str(coll_angle))
-	print("Angle pre reset: " + str(angle))
 	angle = 2 * coll_angle + 180 - angle
 	reset_angle_and_rotate()
-	print("Angle post reset: " + str(angle))
 	position += Vector2(1, 0).rotated(deg2rad(angle)) * VEL/16
 
 

@@ -10,7 +10,6 @@ extends Node2D
 func _ready():
 	rotation_degrees = rand_range(0,360)
 	modulate = Color(rand_range(0.7,1), rand_range(0.7, 1), rand_range(0.7, 1))
-	print(rotation_degrees)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

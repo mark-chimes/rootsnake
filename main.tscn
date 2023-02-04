@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://snakehead.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sunny-spells-font/SunnyspellsRegular-MV9ze.otf" type="DynamicFontData" id=2]
@@ -8,9 +8,8 @@
 [ext_resource path="res://CameraControl.gd" type="Script" id=6]
 [ext_resource path="res://game_control.gd" type="Script" id=7]
 [ext_resource path="res://sprites/sidewall.png" type="Texture" id=8]
-[ext_resource path="res://Potato.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Potato_big.tscn" type="PackedScene" id=10]
 [ext_resource path="res://mangabey-font/MangabeyRegular-rgqVO.otf" type="DynamicFontData" id=11]
+[ext_resource path="res://PotatoGenerator.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 768, 32 )
@@ -126,6 +125,7 @@ shape = SubResource( 4 )
 
 [node name="Winscreen" type="Node2D" parent="CameraControl"]
 pause_mode = 2
+visible = false
 z_index = 50
 
 [node name="Label" type="Label" parent="CameraControl/Winscreen"]
@@ -166,138 +166,11 @@ region_rect = Rect2( 0, 0, 384, 32 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 4, 4 )
 
-[node name="Potatoes" type="Node2D" parent="."]
-
-[node name="Potato" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -57, 1874 )
-
-[node name="Potato2" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 596, 1282 )
-
-[node name="Potato3" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 446, 2182 )
-
-[node name="Potato4" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 113, 689 )
-
-[node name="Potato5" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -123, 1304 )
-
-[node name="Potato6" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 411, 1523 )
-
-[node name="Potato7" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -489, 1591 )
-
-[node name="Potato8" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -549, 938 )
-
-[node name="Potato9" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -305, 338 )
-
-[node name="Potato10" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 487, 904 )
-
-[node name="BigPotato" parent="Potatoes" instance=ExtResource( 10 )]
-position = Vector2( -371, 1319 )
-
-[node name="BigPotato2" parent="Potatoes" instance=ExtResource( 10 )]
-position = Vector2( 363, 1864 )
-
-[node name="BigPotato3" parent="Potatoes" instance=ExtResource( 10 )]
-position = Vector2( -336, 2510 )
-
-[node name="Potato11" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -89, 3531 )
-
-[node name="Potato12" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 564, 2939 )
-
-[node name="Potato13" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 484, 3604 )
-
-[node name="Potato14" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 81, 2346 )
-
-[node name="Potato15" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -155, 2961 )
-
-[node name="Potato16" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 379, 3180 )
-
-[node name="Potato17" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -521, 3248 )
-
-[node name="Potato18" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -581, 2595 )
-
-[node name="Potato19" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -337, 1995 )
-
-[node name="Potato20" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 455, 2561 )
-
-[node name="BigPotato4" parent="Potatoes" instance=ExtResource( 10 )]
-position = Vector2( -403, 2976 )
-
-[node name="BigPotato5" parent="Potatoes" instance=ExtResource( 10 )]
-position = Vector2( 331, 3521 )
-
-[node name="BigPotato6" parent="Potatoes" instance=ExtResource( 10 )]
-position = Vector2( -298, 3932 )
-rotation = 0.110336
-
-[node name="Potato21" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -83, 4566 )
-rotation = 0.110336
-
-[node name="Potato22" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 596, 4266 )
-rotation = 0.110336
-
-[node name="Potato23" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 109, 4779 )
-rotation = 0.110336
-
-[node name="Potato24" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 113, 3673 )
-
-[node name="Potato25" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 493, 4675 )
-rotation = 0.110336
-
-[node name="Potato26" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 74, 4120 )
-rotation = 0.110336
-
-[node name="Potato27" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -515, 4283 )
-rotation = 0.110336
-
-[node name="Potato28" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -549, 3922 )
-rotation = 0.110336
-
-[node name="Potato29" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( -375, 3557 )
-
-[node name="Potato30" parent="Potatoes" instance=ExtResource( 9 )]
-position = Vector2( 487, 3888 )
-rotation = 0.110336
-
-[node name="BigPotato7" parent="Potatoes" instance=ExtResource( 10 )]
-position = Vector2( 270, 4068 )
-rotation = 0.110336
-
-[node name="BigPotato8" parent="Potatoes" instance=ExtResource( 10 )]
-position = Vector2( 203, 4442 )
-rotation = 0.110336
-
-[node name="BigPotato9" parent="Potatoes" instance=ExtResource( 10 )]
-position = Vector2( -426, 4649 )
-rotation = 0.110336
+[node name="PotatoGenerator" type="Node2D" parent="."]
+script = ExtResource( 12 )
 
 [connection signal="collide" from="snakehead1" to="." method="_on_snakehead1_collide"]
 [connection signal="collide" from="snakehead2" to="." method="_on_snakehead2_collide"]
 [connection signal="lose_1" from="CameraControl" to="." method="_on_CameraControl_lose_1"]
 [connection signal="lose_2" from="CameraControl" to="." method="_on_CameraControl_lose_2"]
+[connection signal="screen_moved" from="CameraControl" to="PotatoGenerator" method="_on_CameraControl_screen_moved"]
