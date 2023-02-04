@@ -2,12 +2,24 @@ extends Node2D
 
 var is_game_over = false
 
+export var num_players = 1
+
+func _ready(): 
+	start_game()
+
 func _process(delta):
 	if is_game_over:
+		num_players = 1
 		if Input.is_action_just_pressed("action_restart"):
 			get_tree().paused = false
 			get_tree().reload_current_scene()
 		
+func start_game(): 
+	$CameraControl.num_players = num_players
+	$trail.num_players = num_players
+	if num_players == 1: 
+		$snakehead2.queue_free()
+	$trail.start_game()
 
 func _on_snakehead1_collide():
 	print("Snakehead 1 game end!")

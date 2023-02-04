@@ -22,7 +22,7 @@ extents = Vector2( 12, 930 )
 size = 64
 font_data = ExtResource( 2 )
 
-[node name="main" type="Node2D"]
+[node name="game_control" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 7 )
 
