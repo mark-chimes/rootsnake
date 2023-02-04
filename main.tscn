@@ -40,6 +40,8 @@ __meta__ = {
 [node name="Area2D" type="Area2D" parent="wall"]
 position = Vector2( 0, -64 )
 z_index = 30
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall/Area2D"]
 position = Vector2( -1, -32 )
@@ -101,34 +103,34 @@ action_right = "p2_right"
 angle = 105
 display_name = "snake2"
 
-[node name="CameraControl" type="Node2D" parent="."]
+[node name="CameraController" type="Node2D" parent="."]
 position = Vector2( -1, 0 )
 script = ExtResource( 6 )
 
-[node name="Camera2D" type="Camera2D" parent="CameraControl"]
+[node name="Camera2D" type="Camera2D" parent="CameraController"]
 current = true
 smoothing_enabled = true
 
-[node name="Area2D" type="Area2D" parent="CameraControl"]
+[node name="Area2D" type="Area2D" parent="CameraController"]
 z_index = 30
 z_as_relative = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraControl/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraController/Area2D"]
 position = Vector2( -744.5, 35 )
 z_index = 30
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraControl/Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraController/Area2D"]
 position = Vector2( 746, 0 )
 z_index = 30
 shape = SubResource( 4 )
 
-[node name="Winscreen" type="Node2D" parent="CameraControl"]
+[node name="Winscreen" type="Node2D" parent="CameraController"]
 pause_mode = 2
 visible = false
 z_index = 50
 
-[node name="Label" type="Label" parent="CameraControl/Winscreen"]
+[node name="Label" type="Label" parent="CameraController/Winscreen"]
 margin_left = -763.0
 margin_top = -464.0
 margin_right = 765.0
@@ -139,7 +141,7 @@ Wins!"
 align = 1
 valign = 1
 
-[node name="Label2" type="Label" parent="CameraControl/Winscreen"]
+[node name="Label2" type="Label" parent="CameraController/Winscreen"]
 margin_left = -762.0
 margin_top = 200.0
 margin_right = 757.0
@@ -150,14 +152,14 @@ align = 1
 valign = 1
 
 [node name="topground" type="Sprite" parent="."]
-position = Vector2( 0, -512 )
+position = Vector2( -1, -448 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 384, 192 )
 
 [node name="ground" type="Sprite" parent="."]
-position = Vector2( 0, -64 )
+position = Vector2( -1, 0 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 region_enabled = true
@@ -171,6 +173,6 @@ script = ExtResource( 12 )
 
 [connection signal="collide" from="snakehead1" to="." method="_on_snakehead1_collide"]
 [connection signal="collide" from="snakehead2" to="." method="_on_snakehead2_collide"]
-[connection signal="lose_1" from="CameraControl" to="." method="_on_CameraControl_lose_1"]
-[connection signal="lose_2" from="CameraControl" to="." method="_on_CameraControl_lose_2"]
-[connection signal="screen_moved" from="CameraControl" to="PotatoGenerator" method="_on_CameraControl_screen_moved"]
+[connection signal="lose_1" from="CameraController" to="." method="_on_CameraControl_lose_1"]
+[connection signal="lose_2" from="CameraController" to="." method="_on_CameraControl_lose_2"]
+[connection signal="screen_moved" from="CameraController" to="PotatoGenerator" method="_on_CameraControl_screen_moved"]

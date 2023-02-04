@@ -2,11 +2,13 @@ extends Node2D
 
 signal collide
 
-var VEL = 256.0
+var VEL = 100.0
 
-var turn_speed = 180.0
+var SPEEDUP_FACTOR = 2
 
-var num_players = 1
+var turn_speed = 100.0
+
+var num_players = 0
 var other_player = null
 
 export var is_control_inverted = false
@@ -19,10 +21,14 @@ export var display_name = "DEFAULT"
 const MAX_DIST = 800.0
 const MIN_DIST = 12.0
 
+var game_started = false
+
 func start_game():
-	pass
+	game_started = true
 
 func _process(delta):
+	VEL = VEL + delta * SPEEDUP_FACTOR
+	turn_speed = turn_speed + delta * SPEEDUP_FACTOR
 	if is_control_inverted: 
 		if Input.is_action_pressed(action_left):
 			angle += turn_speed * delta
@@ -36,10 +42,13 @@ func _process(delta):
 	reset_angle_and_rotate()
 
 func _physics_process(delta):
+	if not game_started: 
+		return
+		
 	var vel = VEL
 	if num_players == 1: 
 		position += Vector2(1, 0).rotated(deg2rad(angle)) * VEL * delta
-	else: 
+	elif num_players == 2: 
 		if other_player.position.y > position.y + MIN_DIST:
 			var vertical_component = sin(deg2rad(angle))
 			var dist_ratio = (other_player.position.y + MIN_DIST*2 - position.y)/MAX_DIST

@@ -16,11 +16,16 @@ var has_activated_collisions = false
 export var start_col = Color(0,0,0)
 export var end_col = Color(0,0,0)
 
+var camera_controller = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	camera_controller = get_tree().root.get_node("game_control").get_node("CameraController")
 
 func _process(delta):
+	if position.y < camera_controller.position.y - 800:
+		queue_free()
+	
 	countdown -= delta
 	if countdown <= 0: 
 		queue_free()

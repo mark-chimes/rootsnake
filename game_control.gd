@@ -2,7 +2,7 @@ extends Node2D
 
 var is_game_over = false
 
-export var num_players = 1
+export var num_players = 2
 
 func _ready(): 
 	start_game()
@@ -14,8 +14,9 @@ func _process(delta):
 			get_tree().reload_current_scene()
 			
 func start_game(): 
-	$CameraControl.num_players = num_players
+	$CameraController.num_players = num_players
 	$trail.num_players = num_players
+	$snakehead1.num_players = num_players
 	if num_players == 1: 
 		$snakehead2.queue_free()
 		$snakehead1.start_game()
@@ -26,7 +27,7 @@ func start_game():
 		$snakehead2.other_player = $snakehead1
 		$snakehead1.start_game()
 		$snakehead2.start_game()
-	$CameraControl.start_game()
+	$CameraController.start_game()
 	$trail.start_game()
 
 func _on_snakehead1_collide():
@@ -47,16 +48,16 @@ func _on_CameraControl_lose_2():
 
 func snake_1_loses(): 
 	get_tree().paused = true
-	$CameraControl/Winscreen.visible = true
-	var winscreenlabel = $CameraControl/Winscreen/Label
+	$CameraController/Winscreen.visible = true
+	var winscreenlabel = $CameraController/Winscreen/Label
 	winscreenlabel.text = "Player 2\nWins!"
 	winscreenlabel.set("custom_colors/font_color", Color8(178,57,15))
 	is_game_over = true
 
 func snake_2_loses(): 
 	get_tree().paused = true
-	var winscreenlabel = $CameraControl/Winscreen/Label
-	$CameraControl/Winscreen.visible = true
+	var winscreenlabel = $CameraController/Winscreen/Label
+	$CameraController/Winscreen.visible = true
 	winscreenlabel.text = "Player 1\nWins!"
 	winscreenlabel.set("custom_colors/font_color", Color(0.1,0.5,0.1))
 	is_game_over = true

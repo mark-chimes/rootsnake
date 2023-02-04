@@ -4,7 +4,9 @@ var trail_res = load("res://trailpiece.tscn")
 
 var num_players = 1
 
-var SPAWN_TIME = 0.1
+var MIN_SPAWN = 0.05
+var addition = 0.2
+var SPAWN_TIME = 0.25
 var countdown = SPAWN_TIME
 var s1_start_col = Color(0.1,0.7,0.1)
 var s1_end_col = Color(0.5,0.4,0.05)
@@ -19,6 +21,10 @@ func start_game():
 	if num_players > 1:
 		get_parent().get_node("snakehead2").get_node("Sprite").modulate = s2_start_col
 
+func _process(delta):
+	SPAWN_TIME = MIN_SPAWN + addition
+	if addition > 0.0001:
+		addition = addition * (1-delta/50)
 
 func _physics_process(delta):
 	countdown -= delta
