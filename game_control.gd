@@ -18,6 +18,14 @@ func start_game():
 	$trail.num_players = num_players
 	if num_players == 1: 
 		$snakehead2.queue_free()
+		$snakehead1.start_game()
+	else: 
+		$snakehead1.num_players = 2
+		$snakehead2.num_players = 2
+		$snakehead1.other_player = $snakehead2
+		$snakehead2.other_player = $snakehead1
+		$snakehead1.start_game()
+		$snakehead2.start_game()
 	$CameraControl.start_game()
 	$trail.start_game()
 
