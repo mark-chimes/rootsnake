@@ -58,7 +58,10 @@ func _on_Area2D2_area_entered(area):
 	reset_angle_and_rotate()
 	position += Vector2(1, 0).rotated(deg2rad(angle)) * VEL/16
 
-
 func reset_angle_and_rotate(): 
 	angle = fmod(angle, 360)
 	rotation_degrees = angle
+
+
+func _on_Area2D3_area_entered(area):
+	emit_signal("collide")

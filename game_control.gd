@@ -2,7 +2,7 @@ extends Node2D
 
 var is_game_over = false
 
-export var num_players = 2
+export var num_players = 1
 
 func _ready(): 
 	start_game()

@@ -25,5 +25,14 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D2"]
 polygon = PoolVector2Array( 0, -4, 0, 3, 6, 0, 6, -1 )
 
+[node name="Area2D3" type="Area2D" parent="."]
+scale = Vector2( 4, 4 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D3"]
+polygon = PoolVector2Array( 0, -4, 0, 3, 6, 0, 6, -1 )
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_Area2D2_area_entered"]
+[connection signal="area_entered" from="Area2D3" to="." method="_on_Area2D3_area_entered"]

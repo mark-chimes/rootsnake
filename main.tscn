@@ -15,10 +15,10 @@
 extents = Vector2( 768, 32 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24.5, 957 )
+extents = Vector2( 52.5, 957 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 24, 930 )
+extents = Vector2( 52, 930 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 256
@@ -57,7 +57,7 @@ motion_mirroring = Vector2( 0, 1024 )
 
 [node name="Sprite" type="Sprite" parent="wall/ParallaxBackground/ParallaxLayer"]
 position = Vector2( -736, 0 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 1024 )
@@ -65,7 +65,7 @@ region_rect = Rect2( 0, 0, 32, 1024 )
 [node name="right" type="Sprite" parent="wall/ParallaxBackground/ParallaxLayer"]
 position = Vector2( 736, 0 )
 rotation = 3.14159
-scale = Vector2( 2, -2 )
+scale = Vector2( 4, -4 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 1024 )
@@ -114,12 +114,12 @@ z_index = 30
 z_as_relative = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraControl/Area2D"]
-position = Vector2( -743.5, 35 )
+position = Vector2( -744.5, 35 )
 z_index = 30
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraControl/Area2D"]
-position = Vector2( 744, 0 )
+position = Vector2( 746, 0 )
 z_index = 30
 shape = SubResource( 4 )
 
