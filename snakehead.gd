@@ -19,11 +19,7 @@ func _process(delta):
 		
 	# position.x += rand_range(-20*delta,20*delta)
 	
-	if angle > 360:
-		angle -= 360
-	elif angle < 0:
-		angle += 360
-	
+	angle = clamp(angle, 0, 360)
 	rotation_degrees = angle
 
 func _physics_process(delta):
