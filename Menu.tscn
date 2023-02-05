@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menu.gd" type="Script" id=2]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MainButtons" type="Node2D" parent="."]
+
+[node name="SinglePlayerButton" parent="MainButtons" instance=ExtResource( 1 )]
+position = Vector2( -288, -192 )
+button_text = "Single Player (practice)"
+
+[node name="MultiplayerButton" parent="MainButtons" instance=ExtResource( 1 )]
+position = Vector2( -288, -96 )
+button_text = "Two Player (race)"
+
+[node name="HelpButton" parent="MainButtons" instance=ExtResource( 1 )]
+position = Vector2( -288, 0 )
+button_text = "Help"
+
+[node name="CreditButton" parent="MainButtons" instance=ExtResource( 1 )]
+position = Vector2( -288, 96 )
+button_text = "Credits"
+
+[node name="ExitButton" parent="MainButtons" instance=ExtResource( 1 )]
+position = Vector2( -288, 192 )
+button_text = "Exit (Disabled in Browser)"
+
+[connection signal="button_click" from="MainButtons/SinglePlayerButton" to="." method="_on_StartButton_button_click"]
+[connection signal="button_click" from="MainButtons/MultiplayerButton" to="." method="_on_MultiplayerButton_button_click"]
+[connection signal="button_click" from="MainButtons/HelpButton" to="." method="_on_HelpButton_button_click"]
+[connection signal="button_click" from="MainButtons/CreditButton" to="." method="_on_CreditButton_button_click"]
+[connection signal="button_click" from="MainButtons/ExitButton" to="." method="_on_ExitButton_button_click"]

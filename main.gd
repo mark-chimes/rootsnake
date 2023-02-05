@@ -1,41 +1,34 @@
 extends Node2D
 
-var is_game_over = false
+var menu_res = load("res://fake_game.tscn")
+var game_res = load("res://game_control.tscn")
 
-export var num_players = 1
+var game = null
+var fake_game = null
 
-func _ready(): 
-	start_game()
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	fake_game = $fake_game
 
-func _process(delta):
-	if is_game_over:
-		num_players = 1
-		if Input.is_action_just_pressed("action_restart"):
-			get_tree().paused = false
-			get_tree().reload_current_scene()
-		
-func start_game(): 
-	$CameraControl.num_players = num_players
-	$trail.num_players = num_players
-	if num_players == 1: 
-		$snakehead2.queue_free()
-	$trail.start_game()
-
-func _on_snakehead1_collide():
-	print("Snakehead 1 game end!")
-	get_tree().paused = true
-	$CameraControl/Winscreen.visible = true
-	var winscreenlabel = $CameraControl/Winscreen/Label
-	winscreenlabel.text = "Player 2\nWins!"
-	winscreenlabel.set("custom_colors/font_color", Color8(178,57,15))
-	is_game_over = true
-
-
-func _on_snakehead2_collide():
-	print("Snakehead 2 game end!")
-	get_tree().paused = true
-	var winscreenlabel = $CameraControl/Winscreen/Label
-	$CameraControl/Winscreen.visible = true
-	winscreenlabel.text = "Player 1\nWins!"
-	winscreenlabel.set("custom_colors/font_color", Color(0.1,0.5,0.1))
-	is_game_over = true
+func _on_Menu_start_single_player():
+	print("Menu start singleplayer")
+	fake_game.queue_free()
+	game = game_res.instance()
+	game.num_players = 1
+	add_child(game)
+	game.connect("exit", self, "_on_game_exit")
+	
+func _on_Menu_start_multi_player():
+	print("Menu start multiplayer")
+	fake_game.queue_free()
+	game = game_res.instance()
+	game.num_players = 2
+	add_child(game)
+	game.connect("exit", self, "_on_game_exit")
+	
+func _on_game_exit(): 
+	fake_game = menu_res.instance()
+	add_child(fake_game)
+	fake_game.connect("single_player", self, "_on_Menu_start_single_player")
+	fake_game.connect("multi_player", self, "_on_Menu_start_multi_player")
+	game.queue_free()

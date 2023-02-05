@@ -8,10 +8,14 @@ var object_stores = []
 
 var genpos_counter = 2
 
+export var is_fake = false
+
 func _ready():
 	object_stores.append([])
 	object_stores.append([])
 	object_stores.append([])
+	if is_fake: 
+		return
 	for i in range(10):
 		generate_potato(500, 4000)
 		generate_big_potato(500, 4000)

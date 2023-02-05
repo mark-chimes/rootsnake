@@ -1,23 +1,19 @@
 extends Node2D
 
+signal single_player
+signal multi_player
 signal exit
 
 var is_game_over = false
 
-export var num_players = 1
+export var num_players = 2
 
 func _ready(): 
 	start_game()
 
 func _process(delta):
-	if Input.is_action_just_pressed("exit"):
-		emit_signal("exit")
-		
-	if is_game_over:
-		if Input.is_action_just_pressed("action_restart"):
-			get_tree().paused = false
-			get_tree().reload_current_scene()
-	
+	pass
+
 	
 func start_game(): 
 	$CameraController.num_players = num_players
@@ -53,17 +49,14 @@ func _on_CameraControl_lose_2():
 	snake_2_loses()
 
 func snake_1_loses(): 
-	get_tree().paused = true
-	$CameraController/Winscreen.visible = true
-	var winscreenlabel = $CameraController/Winscreen/Label
-	winscreenlabel.text = "Player 2\nWins!"
-	winscreenlabel.set("custom_colors/font_color", Color8(178,57,15))
-	is_game_over = true
+	get_tree().reload_current_scene()
 
 func snake_2_loses(): 
-	get_tree().paused = true
-	var winscreenlabel = $CameraController/Winscreen/Label
-	$CameraController/Winscreen.visible = true
-	winscreenlabel.text = "Player 1\nWins!"
-	winscreenlabel.set("custom_colors/font_color", Color(0.1,0.5,0.1))
-	is_game_over = true
+	get_tree().reload_current_scene()
+
+
+func _on_Menu_start_single_player():
+	emit_signal("single_player")
+
+func _on_Menu_start_multi_player():
+	emit_signal("multi_player")
