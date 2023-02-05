@@ -182,7 +182,5 @@ is_fake = true
 [connection signal="lose_1" from="CameraController" to="." method="_on_CameraControl_lose_1"]
 [connection signal="lose_2" from="CameraController" to="." method="_on_CameraControl_lose_2"]
 [connection signal="screen_moved" from="CameraController" to="PotatoGenerator" method="_on_CameraControl_screen_moved"]
-[connection signal="credits" from="CameraController/Menu" to="." method="_on_Menu_credits"]
-[connection signal="help" from="CameraController/Menu" to="." method="_on_Menu_help"]
 [connection signal="start_multi_player" from="CameraController/Menu" to="." method="_on_Menu_start_multi_player"]
 [connection signal="start_single_player" from="CameraController/Menu" to="." method="_on_Menu_start_single_player"]

@@ -8,6 +8,7 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			print("LEFT CLICK " + button_text)
+			modulate = Color(1,1,1)
 			emit_signal("button_click")
 
 func _on_Area2D_mouse_entered():

@@ -28,8 +28,25 @@ button_text = "Credits"
 position = Vector2( -288, 192 )
 button_text = "Exit (Disabled in Browser)"
 
+[node name="HelpScreen" type="Node2D" parent="."]
+
+[node name="ReturnButton1" parent="HelpScreen" instance=ExtResource( 1 )]
+position = Vector2( -288, 288 )
+button_text = "Return to Menu"
+
+[node name="CreditsScreen" type="Node2D" parent="."]
+
+[node name="ReturnButton2" parent="CreditsScreen" instance=ExtResource( 1 )]
+position = Vector2( -288, 288 )
+button_text = "Return to Menu"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
 [connection signal="button_click" from="MainButtons/SinglePlayerButton" to="." method="_on_StartButton_button_click"]
 [connection signal="button_click" from="MainButtons/MultiplayerButton" to="." method="_on_MultiplayerButton_button_click"]
 [connection signal="button_click" from="MainButtons/HelpButton" to="." method="_on_HelpButton_button_click"]
 [connection signal="button_click" from="MainButtons/CreditButton" to="." method="_on_CreditButton_button_click"]
 [connection signal="button_click" from="MainButtons/ExitButton" to="." method="_on_ExitButton_button_click"]
+[connection signal="button_click" from="HelpScreen/ReturnButton1" to="." method="_on_ReturnButton1_button_click"]
+[connection signal="button_click" from="CreditsScreen/ReturnButton2" to="." method="_on_ReturnButton2_button_click"]
