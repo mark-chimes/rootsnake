@@ -12,21 +12,40 @@ var num_players = 0
 var other_player = null
 
 export var is_control_inverted = false
+export var player_num = 2
 
 export var action_left = "p1_left"
 export var action_right = "p1_right"
 export var angle = 75
 export var display_name = "DEFAULT"
 
+export(Color) var color
+
 const MAX_DIST = 800.0
 const MIN_DIST = 12.0
 
+const PARTICLE_CHANGE_TIME = 5
+var time_since_last_change = 0
+
 var game_started = false
+
+onready var particles = get_node("Particles1")
 
 func start_game():
 	game_started = true
+	if player_num == 1:
+		particles = $Particles1
+		$Particles2.queue_free()
+	else: 
+		$Particles1.queue_free()
+		particles = $Particles2
+	$Sprite.modulate = color
 
 func _process(delta):
+	time_since_last_change += delta
+	if time_since_last_change > PARTICLE_CHANGE_TIME:
+		particles.lifetime *= 0.95
+		time_since_last_change = 0
 	VEL = VEL + delta * SPEEDUP_FACTOR
 	turn_speed = turn_speed + delta * SPEEDUP_FACTOR
 	if is_control_inverted: 

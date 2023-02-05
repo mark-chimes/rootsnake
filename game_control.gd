@@ -15,20 +15,20 @@ func _process(delta):
 			
 func start_game(): 
 	$CameraController.num_players = num_players
-	$trail.num_players = num_players
 	$snakehead1.num_players = num_players
 	if num_players == 1: 
 		$snakehead2.queue_free()
 		$snakehead1.start_game()
 	else: 
 		$snakehead1.num_players = 2
+		$snakehead1.player_num = 1
 		$snakehead2.num_players = 2
+		$snakehead2.player_num = 2
 		$snakehead1.other_player = $snakehead2
 		$snakehead2.other_player = $snakehead1
 		$snakehead1.start_game()
 		$snakehead2.start_game()
 	$CameraController.start_game()
-	$trail.start_game()
 
 func _on_snakehead1_collide():
 	print("Snakehead 1 game end!")
