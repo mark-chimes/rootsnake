@@ -1,17 +1,21 @@
 extends Node2D
 
+var angle 
+var vel 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	vel = rand_range(0, 20)
+	angle = rand_range(0, 360)
 	rotation_degrees = rand_range(0,360)
 	modulate = Color(rand_range(0.7,1), rand_range(0.7, 1), rand_range(0.7, 1))
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	
+func _process(delta):
+	if position.x < -680: 
+		position.x += 4
+		angle = angle + 180
+		position += Vector2(1, 0).rotated(deg2rad(angle)) * vel * 0.5
+	elif position.x > 680: 
+		position.x -= 4
+		angle = angle + 180
+		position += Vector2(1, 0).rotated(deg2rad(angle)) * vel * 0.5
+	position += Vector2(1, 0).rotated(deg2rad(angle)) * vel * delta

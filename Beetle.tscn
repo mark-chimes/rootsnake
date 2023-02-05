@@ -47,7 +47,7 @@ script = ExtResource( 2 )
 modulate = Color( 0.486275, 0.25098, 0.25098, 1 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 12 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
