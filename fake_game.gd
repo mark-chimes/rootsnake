@@ -54,9 +54,12 @@ func snake_1_loses():
 func snake_2_loses(): 
 	get_tree().reload_current_scene()
 
-
 func _on_Menu_start_single_player():
 	emit_signal("single_player")
 
 func _on_Menu_start_multi_player():
 	emit_signal("multi_player")
+
+
+func _on_Area2D_mouse_exited():
+	pass # Replace with function body.

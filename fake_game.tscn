@@ -111,6 +111,9 @@ script = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="CameraController"]
 smoothing_enabled = true
 
+[node name="Menu" parent="CameraController/Camera2D" instance=ExtResource( 10 )]
+z_index = 10
+
 [node name="Area2D" type="Area2D" parent="CameraController"]
 z_index = 30
 z_as_relative = false
@@ -151,19 +154,15 @@ text = "Press Enter to Restart"
 align = 1
 valign = 1
 
-[node name="Menu" parent="CameraController" instance=ExtResource( 10 )]
-position = Vector2( 1, 0 )
-z_index = 20
-
 [node name="topground" type="Sprite" parent="."]
-position = Vector2( -1, -448 )
+position = Vector2( -1, -48 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 384, 192 )
 
 [node name="ground" type="Sprite" parent="."]
-position = Vector2( -1, 0 )
+position = Vector2( -1, 400 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 region_enabled = true
@@ -181,5 +180,5 @@ is_fake = true
 [connection signal="lose_1" from="CameraController" to="." method="_on_CameraControl_lose_1"]
 [connection signal="lose_2" from="CameraController" to="." method="_on_CameraControl_lose_2"]
 [connection signal="screen_moved" from="CameraController" to="PotatoGenerator" method="_on_CameraControl_screen_moved"]
-[connection signal="start_multi_player" from="CameraController/Menu" to="." method="_on_Menu_start_multi_player"]
-[connection signal="start_single_player" from="CameraController/Menu" to="." method="_on_Menu_start_single_player"]
+[connection signal="start_multi_player" from="CameraController/Camera2D/Menu" to="." method="_on_Menu_start_multi_player"]
+[connection signal="start_single_player" from="CameraController/Camera2D/Menu" to="." method="_on_Menu_start_single_player"]

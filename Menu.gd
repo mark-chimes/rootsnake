@@ -7,6 +7,8 @@ var main_buttons
 var help_screen
 var credits_screen
 
+var is_blocking = false
+
 func _ready(): 
 	main_buttons = $MainButtons
 	help_screen = $HelpScreen
@@ -42,4 +44,3 @@ func _on_ReturnButton2_button_click():
 	add_child(main_buttons)
 	main_buttons.set_owner(self)
 	remove_child(credits_screen)
-

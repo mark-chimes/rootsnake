@@ -17,7 +17,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("action_restart"):
 			get_tree().paused = false
 			get_tree().reload_current_scene()
-	
+
 	
 func start_game(): 
 	$CameraController.num_players = num_players
@@ -56,8 +56,12 @@ func snake_1_loses():
 	get_tree().paused = true
 	$CameraController/Winscreen.visible = true
 	var winscreenlabel = $CameraController/Winscreen/Label
-	winscreenlabel.text = "Player 2\nWins!"
-	winscreenlabel.set("custom_colors/font_color", Color8(178,57,15))
+	if num_players == 1: 
+		winscreenlabel.text = str(stepify($CameraController.position.y/1000, 0.001)) + "\nmetres!"
+		winscreenlabel.set("custom_colors/font_color", Color(0.1,0.5,0.1))
+	else:
+		winscreenlabel.text = "Player 2\nWins!"
+		winscreenlabel.set("custom_colors/font_color", Color8(178,57,15))
 	is_game_over = true
 
 func snake_2_loses(): 
